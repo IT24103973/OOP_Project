@@ -1,18 +1,20 @@
-package CourseManagemt.model;
+package CourseManagement.model;
 
 public class Course {
     private String courseCode;
     private String courseName;
     private String courseUnit;
     private int seatLimit;
+    private int courseDuration;
     private String creationDate;
 
     // Constructor to create a new Course object
-    public Course(String courseCode, String courseName, String courseUnit, int seatLimit, String creationDate) {
+    public Course(String courseCode, String courseName, String courseUnit, int seatLimit, int courseDuration, String creationDate) {
         this.courseCode = courseCode;
         this.courseName = courseName;
         this.courseUnit = courseUnit;
         this.seatLimit = seatLimit;
+        this.courseDuration = courseDuration;
         this.creationDate = creationDate;
     }
 
@@ -33,8 +35,11 @@ public class Course {
         return seatLimit;
     }
 
+    public int getCourseDuration() {
+        return courseDuration;
+    }
+
     public String getCreationDate() {
         return creationDate;
     }
 }
-

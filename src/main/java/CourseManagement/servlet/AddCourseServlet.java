@@ -1,7 +1,7 @@
-package CourseManagemt.servlet;
+package CourseManagement.servlet;
 
-import CourseManagemt.model.Course;
-import CourseManagemt.utils.CourseFileHandler;
+import CourseManagement.model.Course;
+import CourseManagement.utils.CourseFileHandler;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -17,12 +17,13 @@ public class AddCourseServlet extends HttpServlet {
         String courseName = request.getParameter("courseName");
         String courseUnit = request.getParameter("courseUnit");
         int seatLimit = Integer.parseInt(request.getParameter("seatLimit"));
+        int courseDuration = Integer.parseInt(request.getParameter("courseDuration"));
         String creationDate = LocalDate.now().toString();
 
-        Course newCourse = new Course(courseCode, courseName, courseUnit, seatLimit, creationDate);
+        Course newCourse = new Course(courseCode, courseName, courseUnit, seatLimit, courseDuration, creationDate);
 
         CourseFileHandler.saveCourse(newCourse);
 
-        response.sendRedirect("index.jsp");
+        response.sendRedirect("addCourse.jsp");
     }
 }
