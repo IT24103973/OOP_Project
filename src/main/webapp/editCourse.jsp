@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Student - University of Education</title>
-    <link rel="stylesheet" href="courses1.css">
+    <link rel="stylesheet" href="CSS/courseManagement.css">
 </head>
 <body>
     <div class="header">

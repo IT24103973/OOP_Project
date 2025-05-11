@@ -58,4 +58,28 @@ public class CourseFileHandler {
                 parts[5]
         );
     }
+
+    // Deletes a course by courseCode (Writes all other courses to a new list accept for the one to be deleted)
+    public static void deleteCourse(String courseCode) {
+        List<Course> allCourses = loadCourses();
+        List<Course> updatedCourses = new ArrayList<>();
+
+        for (Course c : allCourses) {
+            if (!c.getCourseCode().equalsIgnoreCase(courseCode)) {
+                updatedCourses.add(c);
+            }
+        }
+
+        // Rewrite the file with remaining courses
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, false))) {
+            for (Course c : updatedCourses) {
+                writer.write(courseToLine(c));
+                writer.newLine();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
+
