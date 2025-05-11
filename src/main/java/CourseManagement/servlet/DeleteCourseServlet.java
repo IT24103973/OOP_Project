@@ -14,7 +14,7 @@ public class DeleteCourseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String courseCode = request.getParameter("courseCode");
 
-        // Calls the method to delete the course from courseFileHandler
+        // Calls the method to delete the course from courseFileHandler class
         CourseFileHandler.deleteCourse(courseCode);
 
         // Sent back to course list

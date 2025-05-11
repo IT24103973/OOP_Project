@@ -27,10 +27,10 @@
 <div class="container">
     <div class="page-header">
         <h2>Edit Course</h2>
-        <button class="btn btn-secondary" onclick="location.href='page1.html'">Back to List</button>
+        <button class="btn btn-secondary" onclick="location.href='listCourses'">Back to List</button>
     </div>
 
-    <form action = addCourse method = post class="student-form">
+    <form action = "updateCourse" method = post class="student-form">
         <div class="form-group">
             <label for="courseCode">Course Code</label>
             <input type="text" id="courseCode" name="courseCode" required>
@@ -63,7 +63,7 @@
 
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Update Details</button>
-            <button type="button" class="btn btn-secondary" onclick="location.href='page1.html'">Cancel</button>
+            <button type="button" class="btn btn-secondary" onclick="location.href='listCourses'">Cancel</button>
         </div>
     </form>
 </div>

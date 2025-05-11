@@ -30,7 +30,6 @@ public class CourseFileHandler {
             while ((line = reader.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
                     courses.add(lineToCourse(line));
-                    System.out.println("Loaded course: " + line);
                 }
             }
         } catch (IOException e) {
