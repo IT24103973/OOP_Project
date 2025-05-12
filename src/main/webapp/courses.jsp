@@ -8,22 +8,24 @@
     <link rel="stylesheet" href="CSS/courseManagement.css">
 </head>
 <body>
-    <div class="header">
-        <div class="university-branding">
-          <img src="pics/uni_logo.jpg" alt="University Logo" class="university-logo" />
-          <h1>University of Education</h1>
-        </div>
-        <div class="user-info">Welcome, Admin</div>
-      </div>
-      
+<div class="header">
+    <div class="university-branding">
+        <img src="pics/uni_logo.jpg" alt="University Logo" class="university-logo" />
+        <h1>University of Education</h1>
+    </div>
+    <div class="user-info">
+        <div class="admin-welcome">Welcome, Admin</div>
+        <form action="logout" method="dialog">
+            <button type="submit" class="btn btn-secondary logout-btn" onclick="location.href='index.jsp'">Logout</button>
+        </form>
+    </div>
+</div>
 
 <div class="nav">
-    <a href="#">Home</a>
-    <a href="#">Course</a>
-    <a href="#">Enrollment</a>
-    <a href="#">Profile</a>
-    <a href="#">Students</a>
-    <a href="#">News</a>
+    <a href="adminDashboard.jsp">Dashboard</a>
+    <a href="listCourses" class="active">Course Management</a>
+    <a href="listStudents">Student Management</a>
+    <a href="listEnrollments">Enrollment Management</a>
 </div>
 
 <div class="container">

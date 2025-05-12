@@ -1,0 +1,69 @@
+<%
+  response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+  response.setHeader("Pragma", "no-cache");
+  response.setDateHeader("Expires", 0);
+
+  if (session == null || session.getAttribute("adminUser") == null) {
+    response.sendRedirect("adminLogin.jsp");
+    return;
+  }
+%>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Dashboard - University of Education</title>
+  <link rel="stylesheet" href="CSS/courseManagement.css">
+</head>
+<body>
+  <div class="header">
+    <div class="university-branding">
+      <img src="pics/uni_logo.jpg" alt="University Logo" class="university-logo" />
+      <h1>University of Education</h1>
+    </div>
+    <div class="user-info">
+        <div class="admin-welcome">Welcome, Admin</div>
+        <form action="logout" method="get">
+            <button type="submit" class="btn btn-secondary logout-btn">Logout</button>
+        </form>
+    </div>
+  </div>
+
+  <div class="nav">
+    <a href="adminDashboard.jsp" class="active">Dashboard</a>
+    <a href="listCourses">Course Management</a>
+    <a href="listStudents">Student Management</a>
+    <a href="listEnrollments">Enrollment Management</a>
+  </div>
+
+  <div class="container">
+    <div class="page-header">
+      <h2>Admin Dashboard</h2>
+    </div>
+
+    <div class="dashboard-cards">
+      <div class="dashboard-card" onclick="location.href='listCourses'">
+        <h3>Course Management</h3>
+        <p>Create, edit, and delete courses offered at the university.</p>
+      </div>
+
+      <div class="dashboard-card" onclick="location.href='listStudents'">
+        <h3>Student Management</h3>
+        <p>Register, view, and manage student information.</p>
+      </div>
+
+      <div class="dashboard-card" onclick="location.href='listEnrollments'">
+        <h3>Enrollment Management</h3>
+        <p>Handle course enrollment records for students.</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="footer">
+    <p>Email: administration@university.edu.lk | Phone: +123 456 7890</p>
+    <p>© 2025 University of Education. All rights reserved.</p>
+  </div>
+</body>
+</html>

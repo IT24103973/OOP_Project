@@ -8,13 +8,11 @@ import java.util.List;
 
 public class CourseFileHandler {
 
-    private static final String FILE_NAME = "C:\\Users\\tharu\\OneDrive\\Desktop\\database.txt";
-
-
+    private static final String COURSES = "C:\\Users\\tharu\\OneDrive\\Desktop\\database.txt";
 
     // Save a course to file
     public static void saveCourse(Course course) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, true))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(COURSES, true))) {
             writer.write(courseToLine(course));
             writer.newLine();
         } catch (IOException e) {
@@ -25,7 +23,7 @@ public class CourseFileHandler {
     // Load all courses from file
     public static List<Course> loadCourses() {
         List<Course> courses = new ArrayList<>();
-        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_NAME))) {
+        try (BufferedReader reader = new BufferedReader(new FileReader(COURSES))) {
             String line;
             while ((line = reader.readLine()) != null) {
                 if (!line.trim().isEmpty()) {
@@ -70,7 +68,7 @@ public class CourseFileHandler {
         }
 
         // Rewrite the file with remaining courses
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_NAME, false))) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(COURSES, false))) {
             for (Course c : updatedCourses) {
                 writer.write(courseToLine(c));
                 writer.newLine();
