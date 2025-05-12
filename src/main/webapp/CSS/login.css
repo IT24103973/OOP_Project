@@ -116,3 +116,22 @@ body, html {
     margin-top: 10px;
     font-size: 14px;
 }
+
+.go-back-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #6c757d;
+    color: #fff;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.go-back-btn:hover {
+    opacity: 0.9;
+}

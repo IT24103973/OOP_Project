@@ -1,6 +1,6 @@
-package Login.servlet;
+package LoginAndLogout.servlet;
 
-import Login.utils.LoginFileHandler;
+import LoginAndLogout.utils.LoginFileHandler;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
@@ -14,7 +14,7 @@ public class StudentLoginServlet extends HttpServlet {
 
         if (LoginFileHandler.validateStudent(username, password)) {
             request.getSession().setAttribute("studentUser", username);
-            response.sendRedirect("adminDashboard.jsp");
+            response.sendRedirect("studentDashboard.jsp");
         } else {
             request.setAttribute("error", "Invalid student credentials");
             request.getRequestDispatcher("studentLogin.jsp").forward(request, response);

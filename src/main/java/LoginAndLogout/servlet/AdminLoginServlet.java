@@ -1,6 +1,6 @@
-package Login.servlet;
+package LoginAndLogout.servlet;
 
-import Login.utils.LoginFileHandler;
+import LoginAndLogout.utils.LoginFileHandler;
 import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;

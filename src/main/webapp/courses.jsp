@@ -1,3 +1,14 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<%
+    response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+    response.setHeader("Pragma", "no-cache");
+    response.setDateHeader("Expires", 0);
+
+    if (session == null || session.getAttribute("adminUser") == null) {
+        response.sendRedirect("adminLogin.jsp");
+        return;
+    }
+%>
 <%@ page import="java.util.*, CourseManagement.model.Course" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,8 +26,8 @@
     </div>
     <div class="user-info">
         <div class="admin-welcome">Welcome, Admin</div>
-        <form action="logout" method="dialog">
-            <button type="submit" class="btn btn-secondary logout-btn" onclick="location.href='index.jsp'">Logout</button>
+        <form action="logout" method="get">
+            <button type="submit" class="btn btn-secondary logout-btn">Logout</button>
         </form>
     </div>
 </div>
