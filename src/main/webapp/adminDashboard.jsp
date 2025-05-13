@@ -25,8 +25,11 @@
       <h1>University of Education</h1>
     </div>
     <div class="user-info">
-        <div class="admin-welcome">Welcome, Admin</div>
-        <form action="logout" method="get">
+      <div class="admin-welcome">
+        Welcome, <%= session.getAttribute("adminUser") %>
+      </div>
+
+      <form action="logout" method="get">
             <button type="submit" class="btn btn-secondary logout-btn">Logout</button>
         </form>
     </div>
