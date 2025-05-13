@@ -37,7 +37,7 @@
   </form>
 </div>
 
-<button class="go-back-btn" onclick="location.href='index.jsp'">
+<button class="go-back-btn2" onclick="location.href='index.jsp'">
   <i class="fas fa-arrow-left"></i> Go Back
 </button>
 </body>
