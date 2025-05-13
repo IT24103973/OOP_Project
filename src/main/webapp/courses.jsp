@@ -17,6 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Student Management - University of Education</title>
     <link rel="stylesheet" href="CSS/courseManagement.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
 <body>
 <div class="header">
@@ -29,7 +30,9 @@
             Welcome, <%= session.getAttribute("adminUser") %>
         </div>
         <form action="logout" method="get">
-            <button type="submit" class="btn btn-secondary logout-btn">Logout</button>
+            <button type="submit" class="btn btn-secondary logout-btn">
+                Logout&nbsp;&nbsp;<i class="fa fa-sign-out"></i>
+            </button>
         </form>
     </div>
 </div>
