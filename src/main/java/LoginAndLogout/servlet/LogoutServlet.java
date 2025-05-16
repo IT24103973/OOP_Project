@@ -8,10 +8,20 @@ import java.io.IOException;
 @WebServlet("/logout")
 public class LogoutServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        HttpSession session = request.getSession(false); // Don’t create if it doesn’t exist
+        HttpSession session = request.getSession(false);
+        String redirectTarget = "index.jsp"; // fallback
+
         if (session != null) {
-            session.invalidate(); // Destroys session
+            if (session.getAttribute("adminUser") != null) {
+                redirectTarget = "adminLogin.jsp";
+            } else if (session.getAttribute("studentUser") != null) {
+                redirectTarget = "studentLogin.jsp";
+            }
+
+            session.invalidate(); // Invalidate after checking
         }
-        response.sendRedirect("adminLogin.jsp");
+
+        response.sendRedirect(redirectTarget);
     }
 }
+

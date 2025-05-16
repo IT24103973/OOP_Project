@@ -22,7 +22,7 @@ public class LoginFileHandler {
             String line;
             while ((line = reader.readLine()) != null) {
                 String[] parts = line.strip().split(",");
-                if (parts.length == 2 && parts[0].equals(username) && parts[1].equals(password)) {
+                if (parts[0].equals(username) && parts[1].equals(password)) {
                     return true;
                 }
             }
