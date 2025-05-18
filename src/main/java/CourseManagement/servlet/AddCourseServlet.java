@@ -20,6 +20,13 @@ public class AddCourseServlet extends HttpServlet {
         int courseDuration = Integer.parseInt(request.getParameter("courseDuration"));
         String creationDate = LocalDate.now().toString();
 
+        if (CourseFileHandler.isCourseExists(courseCode)) {
+            request.setAttribute("error", "Course with this code already exists!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("addCourse.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+
         Course newCourse = new Course(courseCode, courseName, courseUnit, seatLimit, courseDuration, creationDate);
 
         CourseFileHandler.saveCourse(newCourse);

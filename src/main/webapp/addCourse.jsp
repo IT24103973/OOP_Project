@@ -81,6 +81,13 @@
             </select>
         </div>
 
+        <% if (request.getAttribute("error") != null) { %>
+        <p style="color: red;"><%= request.getAttribute("error") %></p>
+        <% } else if ("1".equals(request.getParameter("saved"))) { %>
+        <p style="color: green;">Course added successfully!</p>
+        <% } %>
+
+
         <div class="form-actions">
             <button type="submit" class="btn btn-primary">Add Course</button>
             <button type="button" class="btn btn-secondary" onclick="location.href='listCourses'">Cancel</button>

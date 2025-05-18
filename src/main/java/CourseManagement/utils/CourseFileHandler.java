@@ -77,5 +77,16 @@ public class CourseFileHandler {
             e.printStackTrace();
         }
     }
+
+    // Check if course already exists by course code
+    public static boolean isCourseExists(String code) {
+        List<Course> courses = loadCourses();
+        for (Course c : courses) {
+            if (c.getCourseCode().equalsIgnoreCase(code)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
