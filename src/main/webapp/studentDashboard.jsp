@@ -40,9 +40,10 @@
 
 <div class="nav">
     <a href="studentDashboard.jsp" class="active">Dashboard</a>
-    <a href="#">Course Enrollment</a>
-    <a href="#">Student Profile</a>
-    <a href="#">News</a>
+    <a href="addEnrollment.jsp">Course Enrollment</a>
+    <a href="courseEnrollment.jsp">My Enrollments</a>
+    <a href="studentProfile.jsp">Student Profile</a>
+    <a href="news">News</a>
 </div>
 
 <div class="container">
@@ -51,17 +52,17 @@
     </div>
 
     <div class="dashboard-cards">
-        <div class="dashboard-card" onclick="location.href='#'">
+        <div class="dashboard-card" onclick="location.href='courseEnrollment.jsp'">
             <h3>Course Enrollment</h3>
             <p>Enroll in courses offered at the university.</p>
         </div>
 
-        <div class="dashboard-card" onclick="location.href='#'">
+        <div class="dashboard-card" onclick="location.href='studentProfile.jsp'">
             <h3>Student Profile</h3>
             <p>View your details on Student Profile.</p>
         </div>
 
-        <div class="dashboard-card" onclick="location.href='#'">
+        <div class="dashboard-card" onclick="location.href='news'">
             <h3>News</h3>
             <p>Review important updates regarding the University.</p>
         </div>

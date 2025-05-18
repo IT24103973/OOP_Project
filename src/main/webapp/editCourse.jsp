@@ -40,7 +40,8 @@
     <a href="adminDashboard.jsp">Dashboard</a>
     <a href="listCourses" class="active">Course Management</a>
     <a href="listStudents">Student Management</a>
-    <a href="listEnrollments">Enrollment Management</a>
+    <a href="pendingEnrollments">Enrollment Management</a>
+    <a href="addNews.jsp">Add News Updates</a>
 </div>
 
 <div class="container">

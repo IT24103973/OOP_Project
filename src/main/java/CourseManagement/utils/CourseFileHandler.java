@@ -77,6 +77,5 @@ public class CourseFileHandler {
             e.printStackTrace();
         }
     }
-
 }
 
