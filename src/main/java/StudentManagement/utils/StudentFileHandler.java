@@ -1,5 +1,6 @@
 package StudentManagement.utils;
 
+import CourseManagement.model.Course;
 import StudentManagement.model.Student;
 
 import java.io.*;
@@ -7,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentFileHandler {
-    private static final String STUDENTS = "C:\\Users\\Admin\\Desktop\\Students.txt";
+    private static final String STUDENTS ="C:\\Users\\Admin\\Desktop\\Students.txt" ;
 
     public static void saveStudent(Student student) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(STUDENTS, true))) {
@@ -71,6 +72,24 @@ public class StudentFileHandler {
         return null;
     }
 
+    public static boolean isStudentExists(String ID) {
+        List<Student> students = loadStudents();
+        for (Student s : students) {
+            if (s.getStudentId().equalsIgnoreCase(ID)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
+    public static boolean isStudentEmailExists(String email) {
+        List<Student> students = loadStudents();
+        for (Student s : students) {
+            if (s.getStudentEmail().equalsIgnoreCase(email)) {
+                return true;
+            }
+        }
+        return false;
+    }
 }
 
