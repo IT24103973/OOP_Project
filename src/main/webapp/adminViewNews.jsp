@@ -12,7 +12,7 @@
 
   List<News> newsList = NewsFileHandler.loadAll();
 %>
-<!--News view-->
+<!--News Adminview-->
 <!DOCTYPE html>
 <html lang="en">
 <head>
