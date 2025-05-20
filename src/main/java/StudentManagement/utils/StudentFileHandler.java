@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentFileHandler {
-    private static final String STUDENTS ="C:\\Users\\Admin\\Desktop\\Students.txt" ;
+    private static final String STUDENTS = "C:\\Users\\tharu\\OneDrive\\Desktop\\students.txt";
 
     public static void saveStudent(Student student) {
         try (BufferedWriter writer = new BufferedWriter(new FileWriter(STUDENTS, true))) {
@@ -92,4 +92,3 @@ public class StudentFileHandler {
         return false;
     }
 }
-
