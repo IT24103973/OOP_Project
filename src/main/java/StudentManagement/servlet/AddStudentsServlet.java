@@ -1,12 +1,11 @@
 package StudentManagement.servlet;
 
+import CourseManagement.utils.CourseFileHandler;
 import StudentManagement.model.Student;
 import StudentManagement.utils.StudentFileHandler;
-import jakarta.servlet.ServletException;
+import jakarta.servlet.*;
 import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.HttpServlet;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.*;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
@@ -20,8 +19,22 @@ public class AddStudentsServlet extends HttpServlet {
         String studentName = request.getParameter("studentName");
         String studentEmail = request.getParameter("studentEmail");
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy hh:mm:ss a");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
         String addedDate = LocalDateTime.now().format(formatter);
+
+        if (StudentFileHandler.isStudentExists(studentId)) {
+            request.setAttribute("error", "Student with this ID already exists!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("addStudent.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
+
+        if (StudentFileHandler.isStudentEmailExists(studentEmail)) {
+            request.setAttribute("error1", "Student with this Email already exists!");
+            RequestDispatcher dispatcher = request.getRequestDispatcher("addStudent.jsp");
+            dispatcher.forward(request, response);
+            return;
+        }
 
         Student student = new Student(studentId, studentPassword, studentName, studentEmail, addedDate);
         StudentFileHandler.saveStudent(student);
