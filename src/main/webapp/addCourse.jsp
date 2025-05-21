@@ -81,6 +81,15 @@
             </select>
         </div>
 
+        <div class="form-group">
+            <label for="courseType">Course Type</label>
+            <select name="courseType" id="courseType">
+                <option value="On-Campus">On-Campus</option>
+                <option value="Online">Online</option>
+            </select>
+        </div>
+
+
         <% if (request.getAttribute("error") != null) { %>
         <p style="color: red;"><%= request.getAttribute("error") %></p>
         <% } %>

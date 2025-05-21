@@ -60,6 +60,7 @@
             <th>Course Unit</th>
             <th>Seat Limit</th>
             <th>Duration (Years)</th>
+            <th>Type</th>
             <th>Creation Date</th>
             <th>Action</th>
         </tr>
@@ -78,6 +79,7 @@
             <td><%= c.getCourseUnit() %></td>
             <td><%= c.getSeatLimit() %></td>
             <td><%= c.getCourseDuration() %></td>
+            <td><%= c.getCourseType() %></td>
             <td><%= c.getCreationDate() %></td>
             <td>
                 <form action="editCourse.jsp" method="get" style="display:inline;">

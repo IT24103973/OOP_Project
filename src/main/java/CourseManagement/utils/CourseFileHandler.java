@@ -1,6 +1,9 @@
 package CourseManagement.utils;
 
 import CourseManagement.model.Course;
+import CourseManagement.model.OnCampusCourse;
+import CourseManagement.model.OnlineCourse;
+import StudentManagement.model.Student;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -39,22 +42,25 @@ public class CourseFileHandler {
 
     // Convert a Course object to a line of text
     private static String courseToLine(Course c) {
-        return c.getCourseCode() + "," + c.getCourseName() + "," + c.getCourseUnit() + "," + c.getSeatLimit() + "," + c.getCourseDuration() + "," + c.getCreationDate();
+        return c.getCourseCode() + "," + c.getCourseName() + "," + c.getCourseUnit() + "," +
+                c.getSeatLimit() + "," + c.getCourseDuration() + "," + c.getCreationDate() + "," + c.getCourseType();
     }
 
     // Convert a line of text back to a Course object
     private static Course lineToCourse(String line) {
         String[] parts = line.split(",");
+        String type = (parts.length >= 7) ? parts[6] : "General";
 
-        return new Course(
-                parts[0],
-                parts[1],
-                parts[2],
-                Integer.parseInt(parts[3]),
-                Integer.parseInt(parts[4]),
-                parts[5]
-        );
+        switch (type) {
+            case "Online":
+                return new OnlineCourse(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), Integer.parseInt(parts[4]), parts[5]);
+            case "On-Campus":
+                return new OnCampusCourse(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), Integer.parseInt(parts[4]), parts[5]);
+            default:
+                return new Course(parts[0], parts[1], parts[2], Integer.parseInt(parts[3]), Integer.parseInt(parts[4]), parts[5]);
+        }
     }
+
 
     // Deletes a course by courseCode (Writes all other courses to a new list accept for the one to be deleted)
     public static void deleteCourse(String courseCode) {
@@ -87,6 +93,16 @@ public class CourseFileHandler {
             }
         }
         return false;
+    }
+
+    public static Course getCourseByCode(String courseCode) {
+        List<Course> courses = loadCourses();
+        for (Course c : courses) {
+            if (c.getCourseCode().equals(courseCode)) {
+                return c;
+            }
+        }
+        return null;
     }
 }
 

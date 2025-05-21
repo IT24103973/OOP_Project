@@ -42,4 +42,8 @@ public class Course {
     public String getCreationDate() {
         return creationDate;
     }
+
+    public String getCourseType() {
+        return "General";
+    }
 }
