@@ -40,5 +40,5 @@ public class AddStudentsServlet extends HttpServlet {
         StudentFileHandler.saveStudent(student);
 
         response.sendRedirect("addStudent.jsp");
-    }
+            }
 }

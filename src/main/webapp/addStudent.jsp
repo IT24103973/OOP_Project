@@ -40,7 +40,8 @@
   <a href="adminDashboard.jsp">Dashboard</a>
   <a href="listCourses">Course Management</a>
   <a href="listStudents" class="active">Student Management</a>
-  <a href="listEnrollments">Enrollment Management</a>
+  <a href="pendingEnrollments">Enrollment Management</a>
+  <a href="addNews.jsp">Add News Updates</a>
 </div>
 
 <div class="container">
@@ -69,6 +70,14 @@
       <label for="studentEmail">Student Email</label>
       <input type="email" id="studentEmail" name="studentEmail" required>
     </div>
+
+    <% if (request.getAttribute("error") != null) { %>
+    <p style="color: red;"><%= request.getAttribute("error") %></p>
+    <% } %>
+
+    <% if (request.getAttribute("error1") != null) { %>
+    <p style="color: red;"><%= request.getAttribute("error1") %></p>
+    <% } %>
 
     <div class="form-actions">
       <button type="submit" class="btn btn-primary">Add Student</button>
