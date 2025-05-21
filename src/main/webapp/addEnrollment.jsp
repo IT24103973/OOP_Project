@@ -11,7 +11,7 @@
     }
 
     String studentId = (String) session.getAttribute("studentUser");
-    Student student = StudentFileHandler.getStudentById(studentId); // You must implement this helper
+    Student student = StudentFileHandler.getStudentById(studentId);
 %>
 
 <!DOCTYPE html>
@@ -132,15 +132,6 @@
         <div class="form-group">
             <label for="reason">Reason for Enrollment</label>
             <textarea id="reason" name="enrollmentReason" rows="4" placeholder="Explain briefly..." required></textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="mode">Preferred Study Mode</label>
-            <select name="studyMode" id="mode" required>
-                <option value="">-- Select --</option>
-                <option value="Online">Online</option>
-                <option value="On-campus">On-campus</option>
-            </select>
         </div>
 
         <div class="form-actions">
