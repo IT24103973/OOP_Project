@@ -83,6 +83,11 @@
 
         <% if (request.getAttribute("error") != null) { %>
         <p style="color: red;"><%= request.getAttribute("error") %></p>
+        <% } %>
+
+
+        <% if (request.getAttribute("error1") != null) { %>
+        <p style="color: red;"><%= request.getAttribute("error1") %></p>
         <% } else if ("1".equals(request.getParameter("saved"))) { %>
         <p style="color: green;">Course added successfully!</p>
         <% } %>

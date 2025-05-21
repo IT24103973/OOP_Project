@@ -20,6 +20,7 @@ public class CourseFileHandler {
         }
     }
 
+    // Load all courses from file
     public static List<Course> loadCourses() {
         List<Course> courses = new ArrayList<>();
         try (BufferedReader reader = new BufferedReader(new FileReader(COURSES))) {

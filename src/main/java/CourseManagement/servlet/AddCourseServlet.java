@@ -20,8 +20,14 @@ public class AddCourseServlet extends HttpServlet {
         int courseDuration = Integer.parseInt(request.getParameter("courseDuration"));
         String creationDate = LocalDate.now().toString();
 
+        if (seatLimit <= 0 || courseDuration <= 0 || !courseCode.matches("[A-Z]{2}\\d{3}")) {
+            request.setAttribute("error", "Invalid course data.");
+            request.getRequestDispatcher("addCourse.jsp").forward(request, response);
+            return;
+        }
+
         if (CourseFileHandler.isCourseExists(courseCode)) {
-            request.setAttribute("error", "Course with this code already exists!");
+            request.setAttribute("error1", "Course with this code already exists!");
             RequestDispatcher dispatcher = request.getRequestDispatcher("addCourse.jsp");
             dispatcher.forward(request, response);
             return;
@@ -31,6 +37,7 @@ public class AddCourseServlet extends HttpServlet {
 
         CourseFileHandler.saveCourse(newCourse);
 
-        response.sendRedirect("addCourse.jsp");
+        response.sendRedirect("addCourse.jsp?saved=1");
+
     }
 }
