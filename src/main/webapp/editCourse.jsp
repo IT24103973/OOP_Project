@@ -42,6 +42,7 @@
     <a href="listStudents">Student Management</a>
     <a href="pendingEnrollments">Enrollment Management</a>
     <a href="addNews.jsp">Add News Updates</a>
+    <a href="listFeedback">Student Feedbacks</a>
 </div>
 
 <div class="container">

@@ -46,4 +46,26 @@ public class Course {
     public String getCourseType() {
         return "General";
     }
+
+    //Setter Methods
+
+    public void setCourseCode(String courseCode) {
+        this.courseCode = courseCode;
+    }
+
+    public void setCourseName(String courseName) {
+        this.courseName = courseName;
+    }
+
+    public void setCourseUnit(String courseUnit) {
+        this.courseUnit = courseUnit;
+    }
+
+    public void setSeatLimit(int seatLimit) {
+        this.seatLimit = seatLimit;
+    }
+
+    public void setCourseDuration(int courseDuration) {
+        this.courseDuration = courseDuration;
+    }
 }

@@ -43,6 +43,7 @@
   <a href="courseEnrollment.jsp">My Enrollments</a>
   <a href="studentProfile.jsp" class="active">Student Profile</a>
   <a href="news.jsp">News</a>
+  <a href="addFeedback.jsp">Add Feedback</a>
 </div>
 
 <div class="container">

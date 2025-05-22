@@ -8,7 +8,7 @@ import java.util.List;
 
 public class NewsFileHandler {
 
-    private static final String FILE = "C:\\Users\\PLUS VISION PC\\Desktop\\news (2).txt";
+    private static final String FILE = "C:\\Users\\tharu\\OneDrive\\Desktop\\news.txt";
     private static final String SEP  = "|";
 
     public static void save(News news) {

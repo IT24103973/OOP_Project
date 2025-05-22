@@ -44,6 +44,7 @@
   <a href="listStudents">Student Management</a>
   <a href="pendingEnrollments">Enrollment Management</a>
   <a href="addNews.jsp">Add News Updates</a>
+  <a href="listFeedback">Student Feedbacks</a>
 </div>
 
 <div class="container">
@@ -70,6 +71,11 @@
     <div class="dashboard-card" onclick="location.href='addNews.jsp'">
       <h3>Add News Updates</h3>
       <p>Publish news and important announcements for students.</p>
+    </div>
+
+    <div class="dashboard-card" onclick="location.href='listFeedback'">
+      <h3>Student Feedbacks</h3>
+      <p>View feedbacks from students.</p>
     </div>
   </div>
 </div>
