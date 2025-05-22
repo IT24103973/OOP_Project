@@ -6,8 +6,8 @@ import java.io.IOException;
 
 public class LoginFileHandler {
 
-    private static final String ADMINS = "C:\\Users\\tharu\\OneDrive\\Desktop\\admins.txt";
-    private static final String STUDENTS = "C:\\Users\\tharu\\OneDrive\\Desktop\\students.txt";
+    private static final String ADMINS = "C:\\Users\\it24103973\\IdeaProjects\\OOP_Project\\src\\main\\webapp\\Data\\admins.txt";
+    private static final String STUDENTS = "C:\\Users\\it24103973\\IdeaProjects\\OOP_Project\\src\\main\\webapp\\Data\\students.txt";
 
     public static boolean validateAdmin(String username, String password) {
         return validateCredentials(ADMINS, username, password);

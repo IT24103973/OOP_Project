@@ -11,7 +11,7 @@ import java.util.List;
 
 public class CourseFileHandler {
 
-    private static final String COURSES = "C:\\Users\\tharu\\OneDrive\\Desktop\\database.txt";
+    private static final String COURSES = "C:\\Users\\it24103973\\IdeaProjects\\OOP_Project\\src\\main\\webapp\\Data\\courses.txt";
 
     // Save a course to file
     public static void saveCourse(Course course) {
