@@ -49,7 +49,7 @@ public class CourseFileHandler {
     // Convert a line of text back to a Course object
     private static Course lineToCourse(String line) {
         String[] parts = line.split(",");
-        String type = (parts.length >= 7) ? parts[6] : "General";
+        String type = parts[6];
 
         switch (type) {
             case "Online":
@@ -95,6 +95,7 @@ public class CourseFileHandler {
         return false;
     }
 
+    // Search for a course by course code
     public static Course getCourseByCode(String courseCode) {
         List<Course> courses = loadCourses();
         for (Course c : courses) {
