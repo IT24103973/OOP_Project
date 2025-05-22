@@ -67,6 +67,11 @@
             <h3>News</h3>
             <p>Review important updates regarding the University.</p>
         </div>
+
+        <div class="dashboard-card" onclick="location.href='addFeedback.jsp'">
+            <h3>Add Feedback</h3>
+            <p>Add your thoughts about the system and the university.</p>
+        </div>
     </div>
 </div>
 
