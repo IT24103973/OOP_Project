@@ -2,6 +2,7 @@ package EnrollmentManagement.servlet;
 
 import CourseEnrollment.model.Enrollment;
 import CourseEnrollment.utils.EnrollmentFileHandler;
+import EnrollmentManagement.utils.EnrollmentQueue;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,15 +21,21 @@ public class RejectEnrollmentServlet extends HttpServlet {
         String sid = request.getParameter("sid");
         String code = request.getParameter("code");
 
-        List<Enrollment> all = EnrollmentFileHandler.loadEnrollments();
+        EnrollmentQueue updatedQueue = new EnrollmentQueue();
+        EnrollmentQueue originalQueue = EnrollmentFileHandler.loadAllEnrollmentsToQueue();
 
-        all.removeIf(e ->
-                e.getStudentId().equals(sid) &&
-                        e.getCourseCode().equals(code) &&
-                        "pending".equalsIgnoreCase(e.getStatus())
-        );
+        while (!originalQueue.isEmpty()) {
+            Enrollment e = originalQueue.dequeue();
+            // Skip this one (i.e., reject = remove from file)
+            if (e.getStudentId().equals(sid) && e.getCourseCode().equals(code)
+                    && "pending".equalsIgnoreCase(e.getStatus())) {
+                continue; // reject = do not enqueue it
+            }
+            updatedQueue.enqueue(e);
+        }
 
-        EnrollmentFileHandler.overwriteEnrollments(all);
+        EnrollmentFileHandler.overwriteEnrollments(updatedQueue.toArray());
         response.sendRedirect("pendingEnrollments");
     }
 }
+

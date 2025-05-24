@@ -19,17 +19,11 @@ public class PendingEnrollmentServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        List<Enrollment> all = EnrollmentFileHandler.loadEnrollments();
-        EnrollmentQueue queue = new EnrollmentQueue();
-
-        for (Enrollment e : all) {
-            if ("pending".equalsIgnoreCase(e.getStatus())) {
-                queue.enqueue(e);
-            }
-        }
+        EnrollmentQueue queue = EnrollmentFileHandler.loadPendingEnrollmentsToQueue();
 
         request.setAttribute("pending", queue.toArray());
         RequestDispatcher dispatcher = request.getRequestDispatcher("pendingEnrollments.jsp");
         dispatcher.forward(request, response);
     }
 }
+

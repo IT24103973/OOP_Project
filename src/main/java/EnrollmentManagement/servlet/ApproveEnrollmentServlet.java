@@ -2,6 +2,7 @@ package EnrollmentManagement.servlet;
 
 import CourseEnrollment.model.Enrollment;
 import CourseEnrollment.utils.EnrollmentFileHandler;
+import EnrollmentManagement.utils.EnrollmentQueue;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -20,22 +21,26 @@ public class ApproveEnrollmentServlet extends HttpServlet {
         String sid = request.getParameter("sid");
         String code = request.getParameter("code");
 
-        List<Enrollment> all = EnrollmentFileHandler.loadEnrollments();
+        EnrollmentQueue updatedQueue = new EnrollmentQueue();
+        EnrollmentQueue originalQueue = EnrollmentFileHandler.loadAllEnrollmentsToQueue();
 
-        for (Enrollment e : all) {
-            if (e.getStudentId().equals(sid) && e.getCourseCode().equals(code) &&
-                    "pending".equalsIgnoreCase(e.getStatus())) {
-                // Replace the status
-                all.set(all.indexOf(e), new Enrollment(
+        while (!originalQueue.isEmpty()) {
+            Enrollment e = originalQueue.dequeue();
+            if (e.getStudentId().equals(sid) && e.getCourseCode().equals(code)
+                    && "pending".equalsIgnoreCase(e.getStatus())) {
+                // Update status
+                updatedQueue.enqueue(new Enrollment(
                         e.getStudentId(), e.getStudentName(), e.getStudentEmail(),
                         e.getCourseCode(), e.getEnrollmentReason(), e.getStudyMode(),
                         e.getEnrollmentDate(), "approved"
                 ));
-                break;
+            } else {
+                updatedQueue.enqueue(e);
             }
         }
 
-        EnrollmentFileHandler.overwriteEnrollments(all);
+        EnrollmentFileHandler.overwriteEnrollments(updatedQueue.toArray());
         response.sendRedirect("pendingEnrollments");
     }
 }
+

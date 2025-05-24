@@ -1,6 +1,7 @@
 package CourseEnrollment.utils;
 
 import CourseEnrollment.model.Enrollment;
+import EnrollmentManagement.utils.EnrollmentQueue;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -60,14 +61,52 @@ public class EnrollmentFileHandler {
         return false;
     }
 
-    public static void overwriteEnrollments(List<Enrollment> list) {
-        try (BufferedWriter writer = new BufferedWriter(new FileWriter(FILE_PATH))) {
-            for (Enrollment e : list) {
-                writer.write(enrollmentToLine(e));
-                writer.newLine();
+    public static void overwriteEnrollments(Enrollment[] enrollments) {
+        try (PrintWriter writer = new PrintWriter(new FileWriter(FILE_PATH))) {
+            for (Enrollment e : enrollments) {
+                writer.println(enrollmentToLine(e)); // Your existing formatter
             }
-        } catch (IOException ex) {
-            ex.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
         }
+    }
+
+
+    public static EnrollmentQueue loadPendingEnrollmentsToQueue() {
+        EnrollmentQueue queue = new EnrollmentQueue();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    Enrollment e = lineToEnrollment(line); // your existing parser
+                    if ("pending".equalsIgnoreCase(e.getStatus())) {
+                        queue.enqueue(e);
+                    }
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return queue;
+    }
+
+    public static EnrollmentQueue loadAllEnrollmentsToQueue() {
+        EnrollmentQueue queue = new EnrollmentQueue();
+
+        try (BufferedReader reader = new BufferedReader(new FileReader(FILE_PATH))) {
+            String line;
+            while ((line = reader.readLine()) != null) {
+                if (!line.trim().isEmpty()) {
+                    Enrollment e = lineToEnrollment(line);
+                    queue.enqueue(e);
+                }
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return queue;
     }
 }

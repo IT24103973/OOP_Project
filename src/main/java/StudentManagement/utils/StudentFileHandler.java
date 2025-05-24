@@ -38,7 +38,6 @@ public class StudentFileHandler {
         return students;
     }
 
-
     private static String studentToLine(Student s) {
         return s.getStudentId() + "," + s.getStudentPassword() + "," + s.getStudentName() + "," + s.getStudentEmail() + "," + s.getAddedDate();
     }
